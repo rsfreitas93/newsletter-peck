@@ -31,35 +31,24 @@ async function generateLegalAnalysis(title, summary) {
     modalContent.innerHTML = '';
     modalLoading.classList.remove('hidden'); // Mostra o loading
 
-    const prompt = `Como um especialista em direito digital, forneça uma breve análise das implicações legais da seguinte notícia, focando em aspectos relevantes para um escritório de advocacia:
-
-    Título: "${title}"
-    Resumo: "${summary}"
-
-    A análise deve ser concisa e objetiva.`;
-
-    let chatHistory = [];
-    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-    const payload = { contents: chatHistory };
-    const apiKey = ""; // Deixe como está, a chave será fornecida em tempo de execução
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
     try {
-        const response = await fetch(apiUrl, {
+        const response = await fetch('/api/generate_analysis', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+            body: JSON.stringify({ title: title, summary: summary })
         });
+        console.log(response)
+        /*if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.json();
 
-        if (result.candidates && result.candidates.length > 0 &&
-            result.candidates[0].content && result.candidates[0].content.parts &&
-            result.candidates[0].content.parts.length > 0) {
-            const text = result.candidates[0].content.parts[0].text;
-            modalContent.innerHTML = `<p>${text}</p>`;
+        if (result.analysis) {
+            modalContent.innerHTML = `<p>${result.analysis}</p>`;
         } else {
             modalContent.innerHTML = '<p class="text-red-500">Não foi possível gerar a análise. Tente novamente.</p>';
-        }
+        }*/
     } catch (error) {
         console.error('Erro ao chamar a API Gemini:', error);
         modalContent.innerHTML = '<p class="text-red-500">Ocorreu um erro ao conectar com o serviço de análise. Por favor, tente novamente mais tarde.</p>';

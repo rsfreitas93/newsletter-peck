@@ -37,8 +37,8 @@ async function generateLegalAnalysis(title, summary) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: title, summary: summary })
         });
-        console.log(response)
-        /*if (!response.ok) {
+
+        if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
@@ -48,7 +48,7 @@ async function generateLegalAnalysis(title, summary) {
             modalContent.innerHTML = `<p>${result.analysis}</p>`;
         } else {
             modalContent.innerHTML = '<p class="text-red-500">Não foi possível gerar a análise. Tente novamente.</p>';
-        }*/
+        }
     } catch (error) {
         console.error('Erro ao chamar a API Gemini:', error);
         modalContent.innerHTML = '<p class="text-red-500">Ocorreu um erro ao conectar com o serviço de análise. Por favor, tente novamente mais tarde.</p>';

@@ -1,0 +1,87 @@
+/* Configuração de cores personalizadas para Tailwind */
+:root {
+    --peck-light-teal: 104, 173, 163;
+    --peck-dark-teal: 0, 75, 87;
+    --peck-accent-green: 198, 255, 0;
+}
+
+.bg-peck-light-teal { background-color: rgb(var(--peck-light-teal)); }
+.text-peck-light-teal { color: rgb(var(--peck-light-teal)); }
+.border-peck-light-teal { border-color: rgb(var(--peck-light-teal)); }
+
+.bg-peck-dark-teal { background-color: rgb(var(--peck-dark-teal)); }
+.text-peck-dark-teal { color: rgb(var(--peck-dark-teal)); }
+.border-peck-dark-teal { border-color: rgb(var(--peck-dark-teal)); }
+
+.bg-peck-accent-green { background-color: rgb(var(--peck-accent-green)); }
+.text-peck-accent-green { color: rgb(var(--peck-accent-green)); }
+.border-peck-accent-green { border-color: rgb(var(--peck-accent-green)); }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8; /* Um cinza claro para o fundo */
+}
+/* Estilo para a imagem de placeholder */
+.placeholder-image {
+    width: 100%;
+    height: 180px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 0.5rem; /* Arredonda as bordas */
+}
+
+/* Estilo para o campo de data */
+input[type="date"] {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(var(--peck-light-teal));
+    background-color: white;
+    color: rgb(var(--peck-dark-teal));
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+input[type="date"]:focus {
+    border-color: rgb(var(--peck-accent-green));
+    box-shadow: 0 0 0 3px rgba(var(--peck-accent-green), 0.3);
+}
+
+/* Estilo para o modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-radius: 0.75rem;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

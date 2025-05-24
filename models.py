@@ -1,4 +1,4 @@
-from app import db # Importa o objeto db do seu app.py
+from app import db 
 
 class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)

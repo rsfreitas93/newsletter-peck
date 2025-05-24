@@ -63,7 +63,7 @@ async function renderNews(date) {
     noNewsMessage.classList.add('hidden'); // Esconde a mensagem de "nenhuma notícia"
 
     try {
-        const response = await fetch(`/api/news?date=${date}`); // Chama sua nova API
+        const response = await fetch(`/api/news?date=${date}`); // Chama a API de bd.py
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
